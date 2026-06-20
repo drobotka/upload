@@ -1,0 +1,32 @@
+# upload — SSoT slot state (FLEET_BLUEPRINT · Layer-0 Assets, public).
+meta:
+  repo: upload
+  version: 0.1.0
+  layer: "0-assets"
+  charter: ../fleet-governance/docs/governance/CHARTER.md
+
+slots:
+  - id: up-brand-icons
+    title: "Brand-/Icon-Set v0.1.0 — erfüllt den web-core-Icon-Vertrag"
+    status: in_review
+    approval: autonomous
+    scope:
+      - "brand/icons/*.png — Icon-Set (16-512 + maskable-192/512 + apple-touch) aus Portal-Donor"
+      - "brand/og-image.png (1200x630) + brand/{favicon,rd-dark,rd-white}.svg"
+      - "brand/MANIFEST.json — Integritaet (sha256 + IHDR-Pixelmasse), generiert"
+      - "scripts/verify_assets.py — HARTes Gate: PNG valide, Masse==Dateiname, web-core-Vertrag, OG 1200x630"
+    evidence:
+      - "make verify GREEN; Quelle: server-intern/portal/assets/icons/ (Brand-Assets, oeffentlich)"
+      - "erfuellt web_core/pwa/ICONS.md (icon-192/512 + maskable-512 + apple-touch)"
+    dod_checks:
+      - gate-assets
+
+  - id: up-fonts
+    title: "Self-hosted Woff2 (Poppins/JetBrains Mono) — loest web-cores System-Font-Fallback ab"
+    status: planned
+    approval: autonomous   # Quelle: @fontsource (OFL) — permissive; Lizenz-Notice noetig (R11)
+
+  - id: up-bundles
+    title: "Browser-/veraPDF-Bundles + Korpora als Release-Assets (pdf-engine-Konsument)"
+    status: planned
+    approval: operator   # Image/Bundle-Wahl + Groesse (Release-Assets, nicht Repo-Tree)
