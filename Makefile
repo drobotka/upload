@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PY := python3
 
 .DEFAULT_GOAL := help
-.PHONY: help verify gate-cruft gate-json gate-assets manifest
+.PHONY: help bootstrap verify gate-cruft gate-json gate-assets manifest
 
 help: ## Show available targets
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -27,3 +27,6 @@ gate-assets: ## PNGs valid + sizes match names + web-core contract + OG (Form->W
 
 manifest: ## Regenerate brand/MANIFEST.json from the asset bytes
 	@$(PY) scripts/build_manifest.py
+
+bootstrap: ## No runtime deps (pure-stdlib gates) — env parity local==CI
+	@echo "[bootstrap] upload: pure-stdlib, no runtime deps"
