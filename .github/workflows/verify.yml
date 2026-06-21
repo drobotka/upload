@@ -1,6 +1,7 @@
-# THIN caller -> fleet-governance reusable verify (DRY CI · FLEET_BLUEPRINT §3.3).
-# Triggers + concurrency live here; job body (bootstrap + gates + secret scan) from the
-# shared reusable. Profile: python 3.12 (fleet-uniform), gate verify. Pure-stdlib gates.
+# upload CI — SELF-CONTAINED (not the fleet reusable). upload is a PUBLIC repo and a
+# public repo cannot use a private repo's (fleet-governance) reusable workflow — so the
+# job body stays here. Same path as local: make bootstrap -> make verify. Python 3.12
+# (fleet-uniform). Pure-stdlib gates (cruft/json/assets), no runtime deps.
 name: verify
 on:
   push:
@@ -13,8 +14,13 @@ concurrency:
 
 jobs:
   verify:
-    uses: drobotka/fleet-governance/.github/workflows/verify-reusable.yml@main
-    with:
-      python-version: "3.12"
-      gate-target: "verify"
-      checkout-submodules: "false"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: bootstrap (env parity)
+        run: make bootstrap
+      - name: verify (the one merge-gate)
+        run: make verify
