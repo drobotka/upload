@@ -3,13 +3,13 @@ SHELL := /bin/bash
 PY := python3
 
 .DEFAULT_GOAL := help
-.PHONY: help bootstrap verify gate-cruft gate-json gate-assets manifest
+.PHONY: help bootstrap verify gate-cruft gate-json gate-assets gate-fonts manifest
 
 help: ## Show available targets
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
 	  | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
-verify: gate-cruft gate-json gate-assets ## Run the full HARD gate suite (merge-gate)
+verify: gate-cruft gate-json gate-assets gate-fonts ## Run the full HARD gate suite (merge-gate)
 	@echo
 	@echo "== make verify: GREEN =="
 
@@ -24,6 +24,10 @@ gate-json: ## MANIFEST.json parses
 gate-assets: ## PNGs valid + sizes match names + web-core contract + OG (Form->Wahrheit)
 	@echo "[gate] assets"
 	@$(PY) scripts/verify_assets.py
+
+gate-fonts: ## Poppins woff2 valid (wOF2) + sha256==manifest + OFL present (R1/R11)
+	@echo "[gate] fonts"
+	@$(PY) scripts/verify_fonts.py
 
 manifest: ## Regenerate brand/MANIFEST.json from the asset bytes
 	@$(PY) scripts/build_manifest.py

@@ -35,3 +35,12 @@ make manifest   # MANIFEST.json aus den Asset-Bytes neu generieren
 Arbeitsweise = **Fleet-Charter** (`drobotka/fleet-governance` ·
 `docs/governance/CHARTER.md`). **Nichts nach `main` ohne Operator-Freigabe.**
 **Öffentliches Repo** — nur bewusst öffentliche Assets.
+
+## Fonts — Poppins (self-hosted, OFL)
+
+`fonts/poppins/` — **Poppins** als **woff2**, Latin-subset, Gewichte 400/500/600/700
+(je ~8.7 KB; gesamt ~34 KB). **Self-hosted** (kein CDN, CSP-safe) → `web-core` bindet sie
+via `@font-face`. Lizenz **SIL OFL-1.1** (`OFL.txt` = Third-Party-Notice, R11). Integrität:
+`fonts/poppins/MANIFEST.json` (sha256 + Bytes + unicode-range + Quelle), erzwungen von
+`gate-fonts` (`make verify`). Quelle: `github.com/google/fonts/ofl/poppins`. *(Eigene
+Brand-Schrift folgt später; Poppins ist der Interim-Stand — D-up gemäß Operator-Wahl 2)*
