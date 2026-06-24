@@ -1,0 +1,4 @@
+# Pflicht-Review an den Operator — Branch-Protection (G4 · CHARTER §4).
+# Jede Aenderung braucht Operator-Review; CI/Workflows besonders.
+*          @drobotka
+/.github/  @drobotka
