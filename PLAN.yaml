@@ -22,9 +22,21 @@ slots:
       - gate-assets
 
   - id: up-fonts
-    title: "Self-hosted Woff2 (Poppins/JetBrains Mono) — loest web-cores System-Font-Fallback ab"
-    status: planned
-    approval: autonomous   # Quelle: @fontsource (OFL) — permissive; Lizenz-Notice noetig (R11)
+    title: "Self-hosted Woff2 (Poppins, OFL) — loest web-cores System-Font-Fallback ab"
+    status: in_review
+    approval: autonomous   # Font-Wahl Poppins = Operator-Wahl 2; Self-Host-Umsetzung autonom; OFL-Notice (R11)
+    scope:
+      - "fonts/poppins/*.woff2 — Poppins latin-subset, Gewichte 400/500/600/700 (~34 KB, self-hosted, CSP-safe)"
+      - "fonts/poppins/MANIFEST.json — Integritaet (sha256 + bytes + unicode_range + Quelle), generiert"
+      - "fonts/poppins/OFL.txt — SIL OFL-1.1 Third-Party-Notice (R11)"
+      - "scripts/verify_fonts.py — HARTes Gate: wOF2-Magic, sha256+bytes==manifest, keine stray woff2, OFL present"
+    evidence:
+      - "make verify GREEN; gate-fonts: 4 woff2 valid, sha256==manifest, 34740 bytes, OFL-1.1"
+      - "Quelle: github.com/google/fonts/ofl/poppins; web-core bindet via @font-face (kein CDN)"
+    dod_checks:
+      - gate-fonts
+    follow_up:
+      - "JetBrains Mono woff2 (Mono-Stack) + eigene Brand-Schrift — spaeter (Interim: Poppins)"
 
   - id: up-bundles
     title: "Browser-/veraPDF-Bundles + Korpora als Release-Assets (pdf-engine-Konsument)"
