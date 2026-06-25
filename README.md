@@ -21,15 +21,15 @@ maskable-512 + apple-touch). Das `gate-assets` beweist hart: jede PNG ist valide
 ihre **IHDR-Pixelmaße == Dateiname**, der Vertrag ist erfüllt, OG = 1200×630.
 
 ```bash
-make verify     # cruft + json + assets
+make verify     # cruft + json + assets + fonts
 make manifest   # MANIFEST.json aus den Asset-Bytes neu generieren
 ```
 
 ## Offen (PLAN.yaml)
-- **Fonts** (autonom): self-hosted Woff2 (Poppins/JetBrains Mono, OFL) → löst
-  web-cores System-Font-Fallback ab (Lizenz-Notice Pflicht, R11).
 - **Bundles** (operator): Browser-/veraPDF-Bundles + Korpora als Release-Assets
-  (pdf-engine-Konsument) — Image/Größen-Wahl ist operator-gated.
+  (pdf-engine-Konsument) — Image-/Größen-Wahl ist operator-gated.
+- **Fonts — JetBrains Mono** (autonom, später): Mono-Stack als woff2 ergänzen;
+  Poppins (Interim) ist **erledigt** (siehe unten, `gate-fonts` grün).
 
 ## Governance
 Arbeitsweise = **Fleet-Charter** (`drobotka/fleet-governance` ·
