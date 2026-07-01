@@ -2,7 +2,7 @@
 
 > **Sprache: Deutsch. Status: bindend.** Schlanker Einstieg; die **kanonische**
 > Arbeitsweise lebt in der Flotten-Charter: `drobotka/fleet-governance` ·
-> `docs/governance/CHARTER.md` (R1–R11, Mutations-Reihenfolge, Gate-Standard,
+> `docs/governance/CHARTER.md` (R1–R16, Mutations-Reihenfolge, Gate-Standard,
 > Autonomie-Vertrag). Bei Konflikt gewinnt die explizite Operator-Anweisung;
 > Widerspruch zu Repo-HEAD **melden**, nicht still übernehmen.
 
@@ -22,6 +22,13 @@ Fonts), `pdf-engine` (Browser/veraPDF). **Eine Quelle**, integritätsgesichert
 - **R6** NIE Secrets in git · **R10** Hygiene-Gate (keine `*.bak/*.orig/*~/*.log`)
 - **R11** nur permissive Lizenzen; **eigene** Brand-Assets (keine Fremd-Marken);
   Fonts/Bundles brauchen Third-Party-Notice (OFL/Apache).
+
+- **R12–R16 (neu, D-fg-34):** **R12** Zitier-/Enthaltungs-Pflicht (Locus oder „nicht verifiziert";
+  Identifikatoren nie erfinden) · **R13** Ops-/Deploy-Fakten nur aus versioniertem Runbook
+  (`docs/runbooks/<target>.md`) · **R14** Tiefenprüfung (reproduzieren + widerlegen +
+  Branch-/PR-Sweep vor Neubau) · **R15** Output-/Token-Disziplin (Zwischenausgaben nur
+  entscheidungsrelevant, Dumps kappen) · **R16** Immutable Authority Core (Background-Jobs
+  schreiben nie Charter/Gates/Guard/Katalog/CI) — Volltext: Charter §1.
 
 ## Gate / Autonomie
 - **`make verify`** = die eine Gate-Suite. Truth-Gate = **`gate-assets`** (PNG
